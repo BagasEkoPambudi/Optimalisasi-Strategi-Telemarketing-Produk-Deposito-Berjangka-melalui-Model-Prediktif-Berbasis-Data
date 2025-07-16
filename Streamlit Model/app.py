@@ -12,12 +12,12 @@ def load_data():
 
 @st.cache_resource
 def load_model():
-    with open("best_xgb_model.pkl", "rb") as f:
+    with open("Streamlit Model/best_xgb_model.pkl", "rb") as f:
         return pickle.load(f)
 
 @st.cache_resource
 def load_threshold():
-    with open("best_threshold.pkl", "rb") as f:
+    with open("Streamlit Model/best_threshold.pkl", "rb") as f:
         return pickle.load(f)
 
 data_ref = load_data()
