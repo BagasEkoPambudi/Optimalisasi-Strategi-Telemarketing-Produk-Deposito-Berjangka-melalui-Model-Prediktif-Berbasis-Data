@@ -8,7 +8,7 @@ st.set_page_config(page_title="Prediksi Nasabah Bank", layout="centered")
 # --- CACHE ---
 @st.cache_data
 def load_data():
-    return pd.read_csv(r"bank-additional-full_cleaned.csv")
+    return pd.read_csv("Streamlit Model/bank-additional-full_cleaned.csv")
 
 @st.cache_resource
 def load_model():
