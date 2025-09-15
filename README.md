@@ -150,10 +150,10 @@ Tahapan ini bertujuan untuk meningkatkan kualitas fitur yang digunakan dalam pem
 
   - Scaling fitur numerik menggunakan Robust Scaler, yang lebih tahan terhadap outlier dibandingkan scaler konvensional.
  
-## **Modelling dan Evaluasi**
+# **Modelling dan Evaluasi**
 Pada tahap ini, dilakukan pemodelan prediktif untuk mengklasifikasikan apakah seorang pelanggan akan tertarik terhadap penawaran deposito berjangka berdasarkan data historis kampanye telemarketing.
 
-### **Cross Validation and Check Perfomance to Data Test**
+## **Cross Validation dan Check Perfomance to Data Test**
 Proses ini bertujuan untuk mengevaluasi performa model menggunakan teknik cross-validation pada data pelatihan, sekaligus mengukur kinerja akhir model terhadap data pengujian yang belum pernah dilihat sebelumnya. Cross-validation memberikan estimasi performa yang lebih andal dengan membagi data pelatihan ke dalam beberapa fold, sementara evaluasi pada data uji digunakan untuk mengukur generalisasi model secara nyata. Metrik yang digunakan antara lain precision serta metrik bisnis seperti CVR dan ROMI.
 
 Beberapa algoritma klasifikasi disiapkan untuk dievaluasi dan dibandingkan performanya, meliputi model linear dan model berbasis pohon keputusan. Setiap model diinisialisasi dengan parameter default, dan random_state disetel untuk memastikan reprodusibilitas hasil. Model yang digunakan antara lain:
@@ -172,7 +172,7 @@ Model-model ini akan digunakan dalam proses cross-validation untuk menentukan ka
 
 Berdasarkan hasil Cross Validation model XGBoost tanpa sampling dipilih karena memberikan **precision tertinggi (63.61%)** dengan **CVR (53.02%)** dan **ROMI (1052.64%)** yang juga paling tinggi, menunjukkan bahwa model ini mampu menargetkan calon depositor secara akurat sekaligus memberikan dampak bisnis yang optimal.
 
-### **Hyperparameter Tuning**
+## **Hyperparameter Tuning**
 Proses ini bertujuan untuk mengoptimalkan kinerja model dengan mencari kombinasi hyperparameter terbaik menggunakan **GridSearchCV**. Dengan melakukan pencarian grid terhadap berbagai nilai seperti jumlah estimators, kedalaman pohon, learning rate, dan parameter subsampling (khusus untuk XGBoost), model dapat disesuaikan agar menghasilkan performa terbaik khususnya dalam hal precision, sesuai dengan fokus bisnis untuk meminimalkan false positive dan meningkatkan efisiensi pemasaran. Evaluasi dilakukan menggunakan teknik stratified cross-validation untuk menjaga proporsi kelas pada setiap fold.
 
 Berikut hasil before after Hyperparameter Tuning XGBoost
@@ -182,10 +182,10 @@ Berikut hasil before after Hyperparameter Tuning XGBoost
 | Before Tuning  | 0.61      | 61.35   | 1233  |
 | After Tuning   | 0.80      | 80.17   | 1642  |
 
-### **Threshold Tuning**
+## **Threshold Tuning**
 Setelah model terbaik ditemukan melalui hyperparameter tuning, dilakukan proses lanjutan dengan threshold tuning untuk mengatur ambang batas probabilitas dalam klasifikasi, dengan tujuan memaksimalkan precision sesuai prioritas bisnis. Proses ini mengevaluasi performa model pada berbagai nilai threshold dan menghitung metrik seperti Precision, Recall, F1 Score, CVR, dan ROMI. Hasilnya menunjukkan bahwa menaikkan threshold ke 0.55 menghasilkan precision tertinggi (92.59%) dan secara signifikan meningkatkan efektivitas kampanye secara bisnis, terbukti dari nilai CVR dan ROMI yang juga meningkat tajam.
 
-### **Business Simulation**
+## **Business Simulation**
 
 | Strategi                          | CVR    | ROMI     | Pelanggan Dihubungi |
 | ----------------------------------| ------ | -------- | ------------------- |
@@ -202,7 +202,7 @@ Ini menunjukkan bahwa efektivitas biaya pemasaran meningkat hampir 11 kali lipat
 
 Dengan menggunakan model prediktif, perusahaan dapat menargetkan pelanggan yang lebih tepat, sehingga mengurangi pemborosan biaya panggilan dan secara signifikan meningkatkan keuntungan dari setiap investasi pemasaran yang dilakukan.
 
-## **Kesimpulan dan Rekomendasi**
+# **Kesimpulan dan Rekomendasi**
 **Kesimpulan**
 
 Evaluasi terhadap data uji menunjukkan bahwa model ini:
@@ -223,6 +223,27 @@ Evaluasi terhadap data uji menunjukkan bahwa model ini:
 2. Perkaya Data Input dengan Sumber Informasi Tambahan
 3. Kembangkan Dashboard Monitoring Model untuk Tim Marketing
 4. Pantau Perubahan Pola Data (Data Drift)
+
+## **Tableau**
+https://public.tableau.com/app/profile/muhamad.kahfi/viz/BANKADDITIONAL/Dashboard3
+
+![alt text](https://github.com/PurwadhikaDev/DeltaGroup_JC_DS_FT_BDG_06_FinalProject/blob/main/Asset/Screenshot%202025-07-16%20at%2022.12.47.png?raw=true)
+
+## **Streamlit**
+
+https://nh2azfhwx3tvzpd62gmakc.streamlit.app/
+
+**Halaman Utama Streamlit**
+
+![alt text](https://github.com/PurwadhikaDev/DeltaGroup_JC_DS_FT_BDG_06_FinalProject/blob/main/Asset/Halaman_Utama_Streamlit.png?raw=true)
+
+**Tab Input Manual**
+
+![alt text](https://github.com/PurwadhikaDev/DeltaGroup_JC_DS_FT_BDG_06_FinalProject/blob/main/Asset/Tab_Input_Manual.png?raw=true)
+
+**Tab Input File CSV**
+
+![alt text](https://github.com/PurwadhikaDev/DeltaGroup_JC_DS_FT_BDG_06_FinalProject/blob/main/Asset/Tab_Input_File.png?raw=true)
 
 ## **Sumber Referensi**
 
@@ -247,5 +268,3 @@ Evaluasi terhadap data uji menunjukkan bahwa model ini:
 - Baesens, B. (2014). Analytics in a Big Data World: The Essential Guide to Data Science and its Applications. Hoboken: Wiley.
 
 - UCI Machine Learning Repository. (2024). Bank Marketing Dataset. Retrieved from https://archive.ics.uci.edu/ml/datasets/bank+marketing
-
-
